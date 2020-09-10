@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  </head>
+<body>
+  <div class="jumbotron">
+    <h1>Kitapcimiza Hosgeldiniz!</h1>
+    <h2>Kayit Olun ve Aboneliginizi Secin!</h2>
+</div>
+<section id="login">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h4>Account Login</h4>
+            </div>
+            <div class="card-body">
+              <form class="form form-horizontal" method="post" role="form">
+                {# This hidden_tag is a CSRF security feature. #}
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                  {{ form.ad.label }}{{form.ad(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.soyad.label }}{{form.soyad(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.email.label }}{{form.email(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.telefonNo.label }}{{form.telefonNo(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.tcKimlikNo.label }}{{form.tcKimlikNo(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.adres.label }}{{form.adres(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.sehir.label }}{{form.sehir(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.ulke.label }}{{form.ulke(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.postaKodu.label }}{{form.postaKodu(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                  {{ form.product.label }}{{form.product(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{ form.submit() }}
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </body>
+</html>
