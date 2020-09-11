@@ -35,7 +35,7 @@ payment_card = {
 #     'locale': 'tr',
 #     'conversationId': 1234,
 #     'name': 'Kutu 1',
-#     'Description': 'Haftalik Plan, 6 ay boyunca her hafta kitap yolluyoruz!'
+#     'description': 'Haftalik Plan, 6 ay boyunca her hafta kitap yolluyoruz!'
 # }
 # reportProduct1 = iyzipay.SubscriptionProduct().create(requestProduct1, options)
 # print(reportProduct1.read().decode('utf-8'))
@@ -44,12 +44,12 @@ payment_card = {
 #     'locale': 'tr',
 #     'conversationId': 1234,
 #     'name': 'Kutu 2',
-#     'Description': 'Aylik Plan, 12 ay boyunca her ay kitap yolluyoruz!'
+#     'description': 'Aylik Plan, 12 ay boyunca her ay kitap yolluyoruz!'
 # }
 # reportProduct2 = iyzipay.SubscriptionProduct().create(requestProduct2, options)
 # print(reportProduct2.read().decode('utf-8'))
 
-# TEK REQUESTI REUSE EDEREK PAYMENT PLAN OLUSTURMA VE PRODUCTLARA REFER ETME
+# PRICINGPLANLARI OLUSTURMA VE PRODUCTLARA REFER ETME
 
 # requestAylikPlan = {
 #     'locale': 'tr',
@@ -62,6 +62,22 @@ payment_card = {
 #     'planPaymentType': 'RECURRING',
 #     'recurrenceCount': 6,
 #     'referenceCode': 'f443917a-f789-45ec-8ca2-7450c71b111a'
+# }
+#
+# reportAylikPlan = iyzipay.SubscriptionPlan().create(requestAylikPlan, options)
+# print(reportAylikPlan.read().decode('utf-8'))
+
+# requestAylikPlan = {
+#     'locale': 'tr',
+#     'conversationId': 1234,
+#     'name': 'Aylik Plan',
+#     'price': 49.90,
+#     'currencyCode': 'TRY',
+#     'paymentInterval': 'MONTHLY',
+#     'paymentIntervalCount': 1,
+#     'planPaymentType': 'RECURRING',
+#     'recurrenceCount': 12,
+#     'referenceCode': 'e00cbcf4-3c41-4677-aad2-f7508ed5add2'
 # }
 #
 # reportAylikPlan = iyzipay.SubscriptionPlan().create(requestAylikPlan, options)
@@ -164,9 +180,11 @@ def index():
         finalreport = iyzipay.SubscriptionCheckoutDirect().create(request1, options12)
 
         session['report'] = finalreport.read().decode('utf-8')
-
-
-        return redirect(url_for('thankyou'))
+        print(session['report'][12])
+        if(session['report'][11] == "s"):
+            return redirect(url_for('thankyou'))
+        else:
+            return redirect(url_for('failed'))
 
 
     return render_template('index.html', form=form)
@@ -174,6 +192,10 @@ def index():
 @app.route('/thankyou')
 def thankyou():
     return render_template('thankyou.html')
+
+@app.route('/failed')
+def failed():
+    return render_template('failed.html')
 
 
 if __name__ == '__main__':
