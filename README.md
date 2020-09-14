@@ -4,6 +4,5 @@ You have to install Conda first. https://docs.conda.io/projects/conda/en/latest/
 
 On terminal:
 
-$ conda create -yourvirtualenv flask
-
+$ conda create -n yourvirtualenv flask
 $ source activate yourvirtualenv
