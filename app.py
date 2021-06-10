@@ -15,8 +15,8 @@ import pdb
 
 
 options12 = {
-  'api_key' : 'sandbox-U24kOS7fdIrzJkgB8e3NZTkAFIXAjmIL',
-  'secret_key' : 'sandbox-qtQ4H120ik7TbcOogvqQDXfgyCEPxf9Q',
+  'api_key' : '',
+  'secret_key' : '',
   'base_url': "sandbox-api.iyzipay.com"
 }
 payment_card = {
